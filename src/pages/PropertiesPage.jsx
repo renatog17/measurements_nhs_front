@@ -19,7 +19,7 @@ export default function PropertiesPage() {
 
         const data = await response.json();
 
-        setProperties(data);
+        setProperties(data.content || []);
     }
 
     async function handleSubmit(event) {

@@ -15,21 +15,25 @@ export default function ClientsPage() {
         loadClients();
     }, []);
 
-    async function loadClients() {
+async function loadClients() {
 
-        try {
+    try {
 
-            const response = await authFetch("/clients");
+        setError("");
 
-            const data = await response.json();
+        const response = await authFetch("/clients");
 
-            setClients(data);
+        const data = await response.json();
 
-        } catch (err) {
+        setClients(data.content || []);
 
-            setError("Erro ao carregar clientes");
-        }
+    } catch (err) {
+
+        console.error(err);
+
+        setError("Erro ao carregar clientes");
     }
+}
 
     async function handleSubmit(event) {
 

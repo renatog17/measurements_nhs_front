@@ -23,10 +23,10 @@ export default function ReadersPage() {
             setLoading(true);
 
             const response = await authFetch("/readers");
-
+            
             const data = await response.json();
 
-            setReaders(data);
+            setReaders(data.content || []);
 
         } catch (err) {
 

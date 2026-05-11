@@ -19,7 +19,7 @@ export default function MetersPage() {
 
         const data = await response.json();
 
-        setMeters(data);
+        setMeters(data.content || []);
     }
 
     async function handleSubmit(event) {
